@@ -11,6 +11,6 @@ class Route
             throw new \Exception('Recurso não encontrado');
         }
 
-        return __DIR__ . "/../{$routes[$uri]}";
+        return __DIR__ . "/../{$routes[$uri]}.php";
     }
 }

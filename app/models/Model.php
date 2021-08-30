@@ -3,9 +3,12 @@
 namespace app\models;
 
 use app\models\Database;
+use app\traits\PersistDb;
 
 abstract class Model
 {
+    use PersistDb;
+
     protected $databaseConn;
 
     public function __construct()
@@ -24,13 +27,11 @@ abstract class Model
         return $all->fetchAll();
     }
 
-    public function find(string $argument, $argumentValue)
+    public function find(string $field, array $params)
     {
-        $findQuery = "SELECT * FROM {$this->table} WHERE {$argument} = :argument";
+        $findQuery = "SELECT * FROM {$this->table} WHERE {$field} = :{$field}";
         $find = $this->databaseConn->prepare($findQuery);
-        $find->bindParam(":argument", $argumentValue, \PDO::PARAM_STR);
-        $find->execute();
-
+        $find->execute($params);
         return $find->fetch();
     }
 

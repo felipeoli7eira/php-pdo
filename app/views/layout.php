@@ -7,6 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome</h1>
+
+    <nav>
+        <a href="/">home</a>
+        <a href="/create_user">criar usuário</a>
+    </nav>
+
+    <div class="container">
+        <?php $layout->load() ?>
+    </div>
+
 </body>
 </html>

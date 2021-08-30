@@ -2,7 +2,6 @@
 
 use app\models\User;
 
-$users = new User;
-dd($users->all());
+$layout->add('home');
 
-// require __DIR__ . "/../views/index.php";
+$users = (new User)->all();
